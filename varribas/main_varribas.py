@@ -2,7 +2,7 @@
 # Author: Victor Arribas <v.arribas.urjc@gmail.com>
 # License: GPLv3 <http://www.gnu.org/licenses/gpl-3.0.html>
 
-from .qtimshow import imshow
+from modules.qtimshow import imshow
 from .print_once import print_once
 import safety_distance
 
@@ -18,8 +18,8 @@ __author__ = 'varribas'
 
 debug = [0,1,2,3]
 debug = [0,1,21,22,3,-1]
-debug = [0,-1,-11,-5]
-debug = [-1, -11]
+debug = [0,-1,-11]
+#debug = [-1, -11]
 
 
 target_depth = 1.75
@@ -85,7 +85,7 @@ class EntryPoint:
         ## thresholding
         img = self.sensor.getImage()
         if 0 in debug:
-            imshow('d0:input', img)
+            imshow('first-person view', img)
 
 
         hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
