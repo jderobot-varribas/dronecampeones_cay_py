@@ -25,6 +25,9 @@ from gui.threadGUI import ThreadGUI
 from gui.GUI import MainWindow
 from PyQt4 import QtGui
 
+# varribas imshow ;)
+from varribas import qtimshow
+
 import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -32,6 +35,8 @@ signal.signal(signal.SIGINT, signal.SIG_DFL)
 if __name__ == '__main__':
     sensor = Sensor();
     app = QtGui.QApplication(sys.argv)
+    qtimshow.enable()  # varribas
+
     frame = MainWindow()
     frame.setSensor(sensor)
     frame.show()
@@ -43,5 +48,7 @@ if __name__ == '__main__':
     t2 = ThreadGUI(frame)  
     t2.daemon=True
     t2.start()
+
+    frame.playClicked()  # varribas
     
     sys.exit(app.exec_()) 
