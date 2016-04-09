@@ -31,6 +31,10 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 
+# Set to false to run your algorithm without
+# annoying teleoperator UI
+WITH_TELEOP = True
+
 if __name__ == '__main__':
     sensor = Sensor();
     app = QtGui.QApplication(sys.argv)
@@ -38,7 +42,11 @@ if __name__ == '__main__':
 
     frame = MainWindow()
     frame.setSensor(sensor)
-    frame.show()
+    if WITH_TELEOP:
+      frame.show()
+    else:
+      frame.playClicked()
+
     algorithm=MyAlgorithm(sensor)
     t1 = ThreadSensor(sensor,algorithm)  
     t1.daemon=True
