@@ -24,14 +24,18 @@ from sensors.threadSensor import ThreadSensor
 from gui.threadGUI import ThreadGUI
 from gui.GUI import MainWindow
 from PyQt4 import QtGui
+from modules import qtimshow
 
 import signal
 
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
+
 if __name__ == '__main__':
     sensor = Sensor();
     app = QtGui.QApplication(sys.argv)
+    qtimshow.enable()
+
     frame = MainWindow()
     frame.setSensor(sensor)
     frame.show()

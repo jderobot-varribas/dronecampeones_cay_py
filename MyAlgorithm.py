@@ -1,4 +1,5 @@
 from sensors import sensor
+from modules.qtimshow import imshow
 
 
 class MyAlgorithm():
@@ -8,9 +9,6 @@ class MyAlgorithm():
 
     def execute(self):
         # Add your code here
-        tmp = self.sensor.getNavdata()
-        if tmp is not None:
-            print "State: " +str(tmp.state)
-            print "Altitude: " +str(tmp.altd)
-            print "Vehicle: " +str(tmp.vehicle)
-            print "Battery %: " +str(tmp.batteryPercent)
+        img = self.sensor.getImage()
+        self.sensor.takeoff()
+        imshow('first-person view', img)
